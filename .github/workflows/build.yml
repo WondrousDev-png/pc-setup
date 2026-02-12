@@ -24,8 +24,10 @@ jobs:
         pip install -r requirements.txt
 
     - name: Build EXE
+      # --noconsole: Hides the black command prompt window
+      # --uac-admin: Requests admin rights
       run: |
-        pyinstaller --onefile --uac-admin --name "SetupInstaller" setup.py
+        pyinstaller --onefile --noconsole --uac-admin --name "SetupInstaller" setup.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
