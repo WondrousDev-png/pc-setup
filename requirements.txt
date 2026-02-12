@@ -1,5 +1,3 @@
 requests
-customtkinter
-packaging
+pywebview
 pyinstaller
-pillow

@@ -1,4 +1,4 @@
-name: Build SetupInstaller
+name: Build NexusWeb
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: '3.10'
 
     - name: Install Dependencies
       run: |
@@ -24,13 +24,13 @@ jobs:
         pip install -r requirements.txt
 
     - name: Build EXE
-      # --noconsole: Hides the black command prompt window
-      # --uac-admin: Requests admin rights
+      # --noconsole hides the black window
+      # pywebview handles the rest
       run: |
-        pyinstaller --onefile --noconsole --uac-admin --name "SetupInstaller" setup.py
+        pyinstaller --onefile --noconsole --uac-admin --name "NexusWebInstaller" setup.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: SetupInstaller_Build
-        path: dist/SetupInstaller.exe
+        name: NexusWebInstaller_Build
+        path: dist/NexusWebInstaller.exe
